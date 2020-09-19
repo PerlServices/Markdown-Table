@@ -10,6 +10,8 @@ use Moo;
 use Text::ASCIITable 0.22;
 use Data::Printer;
 
+our $VERSION = 0.01;
+
 has cols => (
     is  => 'rwp',
     isa => sub { ref $_[0] and 'ARRAY' eq ref $_[0] },
@@ -45,7 +47,7 @@ sub parse {
                 )+
             )
             ^(?:\+(?:-+\+)+)
-        }g;
+        }xmsg;
     }
 
 
@@ -55,13 +57,13 @@ sub parse {
         my @lines = grep{ $_ =~ m{\A\|[^-]+} } split /\n/, $table;
      
         my $headerline = shift @lines;
-        $headerline    =~ s{\A\|}{};
-        $headerline    =~ s{\|$}{};
+        $headerline    =~ s{\A\|\s+}{};
+        $headerline    =~ s{\s+\|$}{};
         my @cols       = split /\s+\|\s+/, $headerline;
 
         my @rows = map{
-            $_ =~ s{\A\|}{};
-            $_ =~ s{\|$}{};
+            $_ =~ s{\A\|\s+}{};
+            $_ =~ s{\s+\|$}{};
             [ split /\s+\|\s+/, $_ ];
         } @lines;
 
@@ -134,13 +136,13 @@ To get tables from an existing Markdown document
     use Markdown::Table;
 
     my $markdown = q~
-This table shows all employees and their role.
+    This table shows all employees and their role.
 
-| Id | Name | Role |
-+---+---+---+
-| 1 | John Smith | Testrole |
-| 2 | Jane Smith | Admin |
-~;
+    | Id | Name | Role |
+    +---+---+---+
+    | 1 | John Smith | Testrole |
+    | 2 | Jane Smith | Admin |
+    ~;
 
     my @tables = Markdown::Table->parse(
         $markdown,
@@ -148,19 +150,88 @@ This table shows all employees and their role.
 
     print $tables[0]->get_table;
 
+=head1 ATTRIBUTES
+
+These are read-only attributes
+
+=over 4
+
+=item * cols
+
+=item * rows
+
+=back
+
 =head1 METHODS
 
 =head2 new
 
+Create a new object
+
+    use Markdown::Table;
+
+    my @columns = qw(Id Name Role);
+    my @data = (
+        [ 1, 'John Smith', 'Testrole' ],
+        [ 2, 'Jane Smith', 'Admin' ],
+    );
+
+
+    my $table = Markdown::Table->new(
+        cols => \@columns,
+        rows => \@data,
+    );
+
+    # or
+
+    my $table = Markdown::Table->new;
+    $table->set_cols( @columns );
+    $table->add_rows( @data );
+
 =head2 set_cols
+
+Set the columns of the table
+
+    my @columns = qw(Id Name Role);
+    $table->set_cols( @columns );
 
 =head2 add_rows
 
+Add a row to the table
+
+    my @data = (
+        [ 1, 'John Smith', 'Testrole' ],
+        [ 2, 'Jane Smith', 'Admin' ],
+    );
+    $table->add_rows( @data );
+
 =head2 get_table
+
+Get the table in markdown format
+
+    my $md_table = $table->get_table
 
 =head2 parse
 
-Parses the Markdown document and creates a L<Markdown::Table> object for each
+Parses the Markdown document and creates a L<Markdown::Table> object for each table found in the
+document.
+
+    use Markdown::Table;
+
+    my $markdown = q~
+    This table shows all employees and their role.
+
+    | Id | Name | Role |
+    +---+---+---+
+    | 1 | John Smith | Testrole |
+    | 2 | Jane Smith | Admin |
+    ~;
+
+    my @tables = Markdown::Table->parse(
+        $markdown,
+    );
+
+    print $tables[0]->get_table;
 
 =head1 SEE ALSO
 
