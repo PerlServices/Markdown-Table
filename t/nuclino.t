@@ -35,7 +35,17 @@ my @tables = Markdown::Table->parse(
     { nuclino => 1 },
 );
 
-is $tables[0]->get_table, '';
-is $tables[1]->get_table, '';
+is $tables[0]->get_table, '| Id | Name       | Role     |
+|----|------------|----------|
+|  1 | John Smith | Testrole |
+|  2 | Jane Smith | Admin    |
+';
+
+is $tables[1]->get_table, '| ID | Dists |
+|----|-------|
+|  1 |   198 |
+|  2 |    53 |
+|  3 |    21 |
+';
 
 done_testing();
