@@ -8,7 +8,6 @@ use warnings;
 use Moo;
 
 use Text::ASCIITable 0.22;
-use Data::Printer;
 
 our $VERSION = 0.01;
 
