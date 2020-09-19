@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/perlservices/Markdown-Table.svg?branch=master)](https://travis-ci.org/perlservices/Markdown-Table)
 [![Kwalitee status](http://cpants.cpanauthors.org/dist/Markdown-Table.png)](https://cpants.cpanauthors.org/dist/Markdown-Table)
 [![GitHub issues](https://img.shields.io/github/issues/perlservices/Markdown-Table.svg)](https://github.com/perlservices/Markdown-Table/issues)
-[![CPAN Cover Status](https://cpancoverbadge.perl-services.de/Markdown-Table-0.01)](https://cpancoverbadge.perl-services.de/Markdown-Table-0.01)
+[![CPAN Cover Status](https://cpancoverbadge.perl-services.de/Markdown-Table-0.02)](https://cpancoverbadge.perl-services.de/Markdown-Table-0.02)
 
 # NAME
 
@@ -9,7 +9,7 @@ Markdown::Table - Create and parse tables in Markdown
 
 # VERSION
 
-version 0.01
+version 0.02
 
 # SYNOPSIS
 
