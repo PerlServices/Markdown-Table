@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/perlservices/Markdown-Table.svg?branch=master)](https://travis-ci.org/perlservices/Markdown-Table)
 [![Kwalitee status](http://cpants.cpanauthors.org/dist/Markdown-Table.png)](https://cpants.cpanauthors.org/dist/Markdown-Table)
 [![GitHub issues](https://img.shields.io/github/issues/perlservices/Markdown-Table.svg)](https://github.com/perlservices/Markdown-Table/issues)
-[![CPAN Cover Status](https://cpancoverbadge.perl-services.de/Markdown-Table-0.02)](https://cpancoverbadge.perl-services.de/Markdown-Table-0.02)
+[![CPAN Cover Status](https://cpancoverbadge.perl-services.de/Markdown-Table-0.03)](https://cpancoverbadge.perl-services.de/Markdown-Table-0.03)
 
 # NAME
 
@@ -9,7 +9,7 @@ Markdown::Table - Create and parse tables in Markdown
 
 # VERSION
 
-version 0.02
+version 0.03
 
 # SYNOPSIS
 
@@ -38,7 +38,7 @@ To get tables from an existing Markdown document
     This table shows all employees and their role.
 
     | Id | Name | Role |
-    +---+---+---+
+    |---|---|---|
     | 1 | John Smith | Testrole |
     | 2 | Jane Smith | Admin |
     ~;

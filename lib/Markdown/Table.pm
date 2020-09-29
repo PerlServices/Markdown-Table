@@ -9,7 +9,7 @@ use Moo;
 
 use Text::ASCIITable 0.22;
 
-our $VERSION = 0.02;
+our $VERSION = 0.03;
 
 has cols => (
     is  => 'rwp',
