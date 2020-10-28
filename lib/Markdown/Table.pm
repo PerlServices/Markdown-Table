@@ -63,6 +63,9 @@ sub parse {
         my @rows = map{
             $_ =~ s{\A\|\s+}{};
             $_ =~ s{\s+\|$}{};
+
+            $_ .= ' ' if '|' eq substr $_, -1;
+
             [ split /\s+\|\s+/, $_ ];
         } @lines;
 
