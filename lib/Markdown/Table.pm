@@ -224,7 +224,7 @@ document.
     This table shows all employees and their role.
 
     | Id | Name | Role |
-    +---+---+---+
+    |---|---|---|
     | 1 | John Smith | Testrole |
     | 2 | Jane Smith | Admin |
     ~;
